@@ -19,6 +19,8 @@ cd CanJS4.0
 npm install
 npm start
 
-Test the Application at: http://localhost:3004
 
-![alt text](capture.png "Screenshot")
+Browse the application on: http://localhost:4200/
+
+![alt text](Capture.PNG "Description goes here")
+
