@@ -14,8 +14,9 @@ To run this app follow the given steps
 
 ```bash
 git clone https://github.com/virendrak4651/CanJS4.0.git```
-```bash
+
 cd CanJS4.0
 npm install
-ng start```
+ng start
+
 Test the Application at: http://localhost:3004
