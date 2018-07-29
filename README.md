@@ -13,7 +13,8 @@ CanJS4 App
 To run this app follow the given steps
 
 ```bash
-git clone https://github.com/virendrak4651/CanJS4.0.git```
+git clone https://github.com/virendrak4651/CanJS4.0.git
+```
 
 cd CanJS4.0
 npm install
