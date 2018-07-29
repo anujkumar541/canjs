@@ -22,5 +22,6 @@ npm start
 
 Browse the application on: http://localhost:4200/
 
-![alt text](Capture.PNG "Description goes here")
+[[https://github.com/virendrak4651/CanJS4.0/blob/master/Capture.PNG|alt=octocat]]
+
 
