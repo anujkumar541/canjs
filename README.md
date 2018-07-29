@@ -16,13 +16,14 @@ To run this app follow the given steps
 git clone https://github.com/virendrak4651/CanJS4.0.git
 ```
 
+```bash
 cd CanJS4.0
 npm install
 npm start
-
+```
 
 Browse the application on: http://localhost:4200/
+![alt text](https://raw.githubusercontent.com/virendrak4651/CanJS4.0/master/Capture.PNG)
 
-[[https://github.com/virendrak4651/CanJS4.0/blob/master/Capture.PNG|alt=octocat]]
 
 
