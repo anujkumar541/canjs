@@ -20,3 +20,5 @@ npm install
 npm start
 
 Test the Application at: http://localhost:3004
+
+![alt text](osm_snap.bmp "Screenshot")
