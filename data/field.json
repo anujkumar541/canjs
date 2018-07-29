@@ -1,0 +1,26 @@
+
+{
+ "Fields": [
+    {"Id":"Id", "Name":"Id"},
+    {"Id":"Description", "Name":"Description"},
+    {"Id":"MAC", "Name":"MAC"},
+    {"Id":"SerialNumber", "Name":"Serial Number"},
+    {"Id":"Platform", "Name":"Platform"},
+    {"Id":"User", "Name":"User"},
+    {"Id":"AssignedSignId", "Name":"Assigned Sign Id"},
+    {"Id":"AssignedSignPath", "Name":"Assigned Sign Path"},
+    {"Id":"Temperature", "Name":"Temperature"},
+    {"Id":"MBMVersion", "Name":"MBM Version"},
+    {"Id":"FirmwareVersion", "Name":"Firmware Version"}
+ ],
+ "SelectedFields": [
+    {"Id":"Id", "Name":"Id"},
+    {"Id":"Description", "Name":"Description"},
+    {"Id":"MAC", "Name":"MAC"},
+    {"Id":"SerialNumber", "Name":"Serial Number"}
+ ],
+ "DefaultFilterField": {
+    "Id":"Id", "Name":"Id"
+ }
+}
+

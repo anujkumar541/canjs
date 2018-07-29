@@ -1,0 +1,62 @@
+<can-import from="components/query-builder/query-builder.less"/>
+
+<div class="dropdownMainDv">
+    <label class="headerlabel"> Select multiple filter expression (OR) to display the product report </label>
+</div>
+
+ {{#each (filterExpressions, expression=value, filterIndex= index)}}
+  <div class="dropdownMainDv">
+    <div class="dropdownDv">
+        <select values:bind='expression.field'>
+            {{#each (scope.vm.availableFields, avFields =value }}
+                <option value='{{avFields.Id}}'>{{avFields.Name}}}</option>      
+            {{/each}}
+        </select>
+    </div>
+
+    <div class="dropdownDv">
+        <select values:bind='expression.operator'>
+            {{#each (scope.vm.availableOperator, avOperator= value)}}
+                <option value='{{avOperator.Id}}'>{{avOperator.Name}}}</option>      
+            {{/each}}
+        </select>
+    </div>
+
+    <div class="dropdownDv">
+        <input type="text" value:bind='expression.value'>
+    </div>
+
+    <div class="dropdownDv">
+        <a class="eventLink" on:el:click="scope.vm.addFilterExpression()">Add </a>
+        {{#if scope.vm.showRemoveLink() }} 
+        <a class="eventLink" on:el:click="scope.vm.removeFilterExpression(filterIndex)">Remove </a>
+        {{/if}}
+    </div>
+
+</div>
+<div class="clr"></div>
+{{/each}}
+
+
+<div class="dropdownMainDv">
+    <label  class="headerlabel"> Sort By </label>
+</div>
+
+<div class="dropdownMainDv">
+    <div class="dropdownDv">
+        <select values:bind='scope.vm.sortExpression.sortBy'>
+            {{#each (scope.vm.availableFields, avField=value) }}
+                <option value='{{avField.Id}}'>{{avField.Name}}}</option>      
+            {{/each}}
+        </select>
+    </div>
+    <div class="dropdownDv">
+        <select values:bind='scope.vm.sortExpression.direction'>
+            <option value='asc'> Asc</option>   
+            <option value='desc'> Desc</option>      
+        </select>
+    </div>
+</div>
+
+<div class="clr"></div>
+

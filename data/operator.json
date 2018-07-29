@@ -1,0 +1,16 @@
+
+{
+ "Operators": [
+    {"Id":"equals", "Name":"Equals"},
+    {"Id":"notequals", "Name":"Not Equals"},
+    {"Id":"isempty", "Name":"Is Empty"},
+    {"Id":"isnotempty", "Name":"Is Not Empty"},
+    {"Id":"startswith", "Name":"Starts With"},
+    {"Id":"contains", "Name":"Contains"}
+
+ ],
+ "DefaultOperator": 
+    {"Id":"equals", "Name":"Equals"}
+ 
+}
+

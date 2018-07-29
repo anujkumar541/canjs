@@ -1,0 +1,141 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #eee;
+    font-family: "Segoe UI";
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    margin:25px auto;
+    background: #fff;
+    padding: 15px;
+    box-shadow: rgb(223, 223, 223) 1px 2px 3px 1px;
+}
+
+.dropdownDv {
+    width: 25%;
+    float: left;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.clr {
+    clear: both;
+    padding-top: 5px;
+}
+
+.checkboxMainDv {
+    padding: 20px 0;
+}
+
+.checkboxLeftDv {
+    width: calc(100% - 100px);
+    float: left;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.rightBtn {
+    float: left;
+    width: 100px;
+    padding: 0 0 20px;
+    box-sizing: border-box;
+ }
+/*
+.checkboxDv {
+    width: 25%;
+    float: left;
+    position: relative;
+}
+
+.checkboxDv input {
+    vertical-align: top;
+}
+
+
+.checkboxRow {
+    margin-bottom: 10px;
+}
+
+
+.check_image input[type="checkbox"] {
+    display: none;
+}
+
+.check_image input[type="checkbox"] + label {
+    color: #333;
+    font-weight: normal;
+}
+
+.check_image input[type="checkbox"] + label {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    margin: -1px 4px 0 0;
+    vertical-align: middle;
+    background: url(../images/check_radio_sheet.png) left top no-repeat;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    text-indent: 28px;
+    word-wrap: normal;
+    white-space: nowrap;
+    font-size: 17px;
+}
+
+.check_image input[type="checkbox"]:checked + label {
+    background: url(../images/check_radio_sheet.png) -23px top no-repeat;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+} */
+
+
+
+@media screen and (max-width:650px) {
+    .dropdownDv {
+        width: 100%;
+        float: none;
+        padding-bottom: 5px;
+    }
+
+    .checkboxLeftDv {
+        width: 100%;
+    }
+
+    .checkboxDv {
+        width: 50%;
+        margin-bottom: 10px;
+    }
+
+    .checkboxRow {
+        margin-bottom: 0px;
+    }
+
+    .contentTable {
+        max-width: 500px;
+        overflow: auto;
+    }
+}
+
+.brand { 
+    margin: 0;
+    padding: 4px !important;
+}
+.brand img{max-width:50px; height:auto;}
+.footer{background:#3a3838; padding:10px 0; text-align:center;}
+.footer p{margin:0; padding:0; color:#fff;}
+.cstm-navbar{
+    background:#fff;
+}

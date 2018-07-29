@@ -1,0 +1,41 @@
+
+   <header>
+       <nav id="nav" class="navbar navbar-default cstm-navbar">
+           <div class="container">
+               <div class="navbar-header">
+                   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+                       <span class="sr-only">Toggle navigation</span>
+                       <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                   </button>
+                   <a href="" class="navbar-brand brand"><img src="images/logo.png" /></a>
+               </div>
+
+               <div class="collapse navbar-collapse" id="menu">
+                   <ul class="nav navbar-nav navbar-right">
+                       <li><a href="#">Home</a></li>
+                       <li><a href="#">About</a></li>
+                   </ul>
+               </div>
+           </div>
+       </nav>
+   </header>
+
+<div class="container wrapper">
+    <query-builder 
+        filterExpressions:to="scope.vars.filterExpressions"
+        sortExpression:to="scope.vars.sortExpression">
+    </query-builder>
+    <field-selector selectedFields:to="scope.vars.selectedFields"></field-selector>
+    <data-loader 
+        filterExpressions:bind="scope.vars.filterExpressions" 
+        selectedFields:bind="scope.vars.selectedFields"
+        sortExpression:bind="scope.vars.sortExpression">
+    </data-loader>
+</div>
+
+
+
+
+

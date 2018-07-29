@@ -1,0 +1,20 @@
+<can-import from="components/field-selector/field-selector.less"/>
+
+  <div class="checkboxMainDv">
+  	<div class="checkboxLeftDv">
+    	<div class="checkboxRow">
+            {{#each (availableFields)}}
+
+        	<div class="checkboxDv check_image">
+            	<input type="checkbox" id="{{Id}}"  on:change="scope.vm.refreshSelectedFieldArray(this)"
+                checked:bind="boolean-to-inList(this.Id, scope.vm.IsSelected())"  />
+                   
+                <label for="{{Id}}">{{Name}}</label>
+            </div>
+            {{/each}}
+            <div class="clr"></div>
+        </div>
+    </div>
+   
+    <div class="clr"></div>
+  </div>

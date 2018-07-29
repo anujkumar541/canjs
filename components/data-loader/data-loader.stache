@@ -1,0 +1,28 @@
+<can-import from="components/data-loader/data-loader.less"/>
+
+<div class="rightBtn">
+    <button  class="checkboxRightBtn" on:el:click="loadData()">{{#if (isLoading)}} Loading... {{else}} Search {{/if}}</button>   
+</div>
+
+<div class="clr"></div>
+
+<div class="contentTable">
+  	<table cellpadding="0" cellspacing="0">
+    	<thead>
+        	<tr>
+                {{#each(selectedFields)}}
+                    <th>{{this.Name}}</th>
+                {{/each}} 
+            </tr>
+        </thead>
+        <tbody>
+             {{#each(scope.vm.productsPromise, row=value rowIndex=index)}}
+                <tr>
+                     {{#each(scope.vm.selectedFields, column=value, columnIndex=index)}}
+                        <td>{{../row[column.Id]}}</td>
+                     {{/each}} 
+                </tr>
+            {{/each}} 
+        </tbody>
+    </table>
+  </div>
