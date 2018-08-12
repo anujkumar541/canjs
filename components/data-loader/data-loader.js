@@ -22,7 +22,7 @@ var contentViewModel = DefineMap.extend({
     isLoading : { type: "boolean", default: false },
     loadData : function() {
         var _self = this;
-        _self.isLoading = true;
+        _self.isLoading = true ;
         Product.getList().then(function(_data) {
              _self.productsPromise = _self.expressionParser(_self.filterExpressions, _self.sortExpression, _data);
              _self.isLoading = false;
@@ -31,7 +31,7 @@ var contentViewModel = DefineMap.extend({
     filterExpressions: {
         Type: DefineList,
         default() {
-            return []
+            return [];
         }
     },
     sortExpression: { type: "any" },
@@ -39,7 +39,7 @@ var contentViewModel = DefineMap.extend({
     selectedFields:{
         Type: DefineList,
         default() {
-            return []
+            return [];
         }
     },
     expressionParser: function(expressions, sortExpression, productList) {

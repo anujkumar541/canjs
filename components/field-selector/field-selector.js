@@ -24,7 +24,7 @@
             var _self = this;
             var result = _self.selectedFields.filter((obj) => {
                 return obj.Id.toString() == objField.Id.toString()
-            })
+            });
             if (result &&  result.length > 0) {
                 _self.selectedFields = _self.selectedFields.filter((obj) => {
                     return obj.Id.toString() != objField.Id.toString()

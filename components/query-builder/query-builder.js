@@ -13,7 +13,7 @@ const filterModel = DefineMap.extend({
         default: operatorArray.DefaultOperator.Id
     },
     value: "string"
-  })
+  });
 
 const dataSortModel = DefineMap.extend({
     sortBy: {
@@ -25,7 +25,7 @@ const dataSortModel = DefineMap.extend({
         default: "asc"
     }
    
-  })
+  });
 
 var queryBuilderViewModel = DefineMap.extend({
     availableFields: {
@@ -43,13 +43,13 @@ var queryBuilderViewModel = DefineMap.extend({
     filterExpressions: {
         Type: DefineList,
         default() {
-            return [new filterModel()]
+            return [new filterModel()];
         }
     },
     sortExpression: {
         Type: dataSortModel,
         default() {
-            return new dataSortModel()
+            return new dataSortModel();
         }
     },
     addFilterExpression: function() {
