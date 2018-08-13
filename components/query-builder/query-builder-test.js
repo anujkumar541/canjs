@@ -1,15 +1,14 @@
-
-
+import QUnit from 'steal-qunit';
 import fieldsArray from '../../data/field.json';
 import operatorArray from '../../data/operator.json';
-import '../query-builder/query-builder.js';
+import './query-builder.js';
 
 QUnit.module("Query Builder Module", {
     setup: function() {
-        
+
     },
     teardown: function() {
-      
+
     }
 });
 
@@ -22,7 +21,7 @@ QUnit.asyncTest("addFilterExpression", function() {
         operator: operatorArray.DefaultOperator.Id
     });
 
-    
+
     var _dataSortModel = new dataSortModel({
         sortBy: fieldsArray.DefaultFilterField.Id,
         direction: "asc"
@@ -38,7 +37,7 @@ QUnit.asyncTest("addFilterExpression", function() {
     _queryBuilderViewModel.addFilterExpression();
 
     assert.equal(_queryBuilderViewModel.length, 2, "2 Filter Expression added in the View Model");
-    
+
 });
 
 // Remove selected FilterExpression from View Mdoel
@@ -49,7 +48,7 @@ QUnit.asyncTest("removeFilterExpression", function() {
         operator: operatorArray.DefaultOperator.Id
     });
 
-    
+
     var _dataSortModel = new dataSortModel({
         sortBy: fieldsArray.DefaultFilterField.Id,
         direction: "asc"
@@ -77,7 +76,7 @@ QUnit.asyncTest("showRemoveLink", function() {
         operator: operatorArray.DefaultOperator.Id
     });
 
-    
+
     var _dataSortModel = new dataSortModel({
         sortBy: fieldsArray.DefaultFilterField.Id,
         direction: "asc"
@@ -91,15 +90,14 @@ QUnit.asyncTest("showRemoveLink", function() {
     });
 
     _queryBuilderViewModel.addFilterExpression();
-    var IsLinkedVisible =_queryBuilderViewModel.showRemoveLink();
-    
+    var IsLinkedVisible = _queryBuilderViewModel.showRemoveLink();
+
     assert.equal(IsLinkedVisible, true, "Remove link is visible");
 
     _queryBuilderViewModel.addFilterExpression();
     _queryBuilderViewModel.removeFilterExpression(1);
-    IsLinkedVisible =_queryBuilderViewModel.showRemoveLink();
+    IsLinkedVisible = _queryBuilderViewModel.showRemoveLink();
 
     assert.equal(IsLinkedVisible, false, "Remove link is invisible");
     Qunit.start();
 });
-
