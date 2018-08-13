@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "http-server -a localhost -p 3004  -c-1",
-    "test": ""
+    "test": "Qunit 'components/**/*-test.js'"
   },
   "steal": {
     "plugins": [
