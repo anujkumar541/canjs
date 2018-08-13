@@ -2,9 +2,9 @@ import QUnit from 'steal-qunit';
 import sampleData from '../../data/sampleData.json';
 import fieldsArray from '../../data/field.json';
 import operatorArray from '../../data/operator.json';
-import './data-loader.js';
+import { Product, contentViewModel,  } from './data-loader';
 
-QUnit.module("Query Builder Module", {
+QUnit.module("Data Loader", {
     setup: function() {
         can.fixture.delay = 1000;
     },
@@ -15,11 +15,12 @@ QUnit.module("Query Builder Module", {
 
 
 // Load Products data
-QUnit.asyncTest("loadData", function() {
+QUnit.test("loadData", function(assert) {
 
+    var done = assert.async();
     var _Product = new Product();
 
-    var _contentViewModel = new dataSortModel({
+    var _contentViewModel = new contentViewModel({
         productsPromise: [],
         isLoading: true,
         filterExpressions: [{
@@ -35,17 +36,21 @@ QUnit.asyncTest("loadData", function() {
 
     _contentViewModel.loadData();
 
-    assert.equal(_contentViewModel.productsPromise.length, 200, "Records Loaded Properly");
-    Qunit.start();
+    setTimeout (function(){
+        assert.equal(_contentViewModel.productsPromise.length, 200, "Records Loaded Properly");
+        done();
+    }, 2000);
+    
 
 });
 
 // Sort Products data By Id in ascending Order
-QUnit.asyncTest("sortData", function() {
+QUnit.test("sortData", function(assert) {
 
+    var done = assert.async(1);
     var _Product = new Product();
 
-    var _contentViewModel = new dataSortModel({
+    var _contentViewModel = new contentViewModel({
         productsPromise: [],
         isLoading: true,
         filterExpressions: [{
@@ -64,32 +69,37 @@ QUnit.asyncTest("sortData", function() {
         direction: "asc"
     };
 
-    var _productsData = _contentViewModel.loadData();
+    _contentViewModel.loadData().then(function(_data) { 
+
     // Sort Data By ID
     // So that Id 1 will be at first Index
-    var _soretdProductList = _contentViewModel.sortData(_sortExpression, _productsData);
-    assert.equal(_soretdProductList[0].Id, "1", "Records Sorted Properly in ascending order");
+    var _soretdProductList = _contentViewModel.sortData(_sortExpression, _data);
 
+        assert.equal(_soretdProductList[0].Id, "1", "Records Sorted Properly in ascending order");
     // Sort Data By ID
     // So that Id 200 will be at first Index
 
     _sortExpression = {
         sortBy: fieldsArray.DefaultFilterField.Id,
-        direction: "asc"
+        direction: "desc"
     };
-    _soretdProductList = _contentViewModel.sortData(_sortExpression, _productsData);
-    assert.equal(_soretdProductList[0].Id, "200", "Records Sorted Properly in descending order");
-    Qunit.start();
+    _soretdProductList = _contentViewModel.sortData(_sortExpression, _data);
+   
+        assert.equal(_soretdProductList[0].Id, "200", "Records Sorted Properly in descending order");
+        done();
+
+    });
+    
 });
 
 
-
 // Filter Products 
-QUnit.asyncTest("Filter Products", function() {
+QUnit.test("Filter Products", function(assert) {
 
+    var done = assert.async();
     var _Product = new Product();
 
-    var _contentViewModel = new dataSortModel({
+    var _contentViewModel = new contentViewModel({
         productsPromise: [],
         isLoading: true,
         filterExpressions: [{
@@ -117,8 +127,9 @@ QUnit.asyncTest("Filter Products", function() {
     Product.getList().then(function(_data) {
         // In case of default filter expression
         var returnValue = _contentViewModel.expressionParser(_filterExpression, _sortExpression, _data);
+        setTimeout (function() {
         assert.equal(returnValue.length, 200, "200 Records filter");
-
+          
         // In case of equals filter expression
         _filterExpression = [{
             field: "Id",
@@ -126,7 +137,10 @@ QUnit.asyncTest("Filter Products", function() {
             value: "5"
         }];
         returnValue = _contentViewModel.expressionParser(_filterExpression, _sortExpression, _data);
+
+      
         assert.equal(returnValue.length, 1, "1 Records found with Id = 5");
+         
 
         // In case of notequals filter expression
         // There are only one rows in sample data having Id = 5
@@ -136,8 +150,11 @@ QUnit.asyncTest("Filter Products", function() {
             value: "5"
         }];
         returnValue = _contentViewModel.expressionParser(_filterExpression, _sortExpression, _data);
+
+     
         assert.equal(returnValue.length, 199, "199 Records found with Id != 5");
         assert.notEqual(returnValue[0].Id, "5", "Id Not equals to 5");
+          
 
         // In case of contains filter expression
         // There are 20 rows in sample data having Id contains 5
@@ -148,9 +165,9 @@ QUnit.asyncTest("Filter Products", function() {
             value: "5"
         }];
         returnValue = _contentViewModel.expressionParser(_filterExpression, _sortExpression, _data);
+      
         assert.equal(returnValue.length, 20, "20 Records found contains 5 in Id Field");
-
-
+           
         // In case of startswith filter expression
         // There are 2 rows in sample data having Id startswith 5
         // e.g 5,55.
@@ -160,8 +177,14 @@ QUnit.asyncTest("Filter Products", function() {
             value: "5"
         }];
         returnValue = _contentViewModel.expressionParser(_filterExpression, _sortExpression, _data);
-        assert.equal(returnValue.length, 2, "2 Records found contains 5 in Id Field");
-        assert.notEqual(returnValue[0].Id.IndexOf("5"), -1, "Id Startswith 5");
+
+       
+            assert.equal(returnValue.length, 2, "2 Records found contains 5 in Id Field");
+            assert.notEqual(returnValue[0].Id.IndexOf("5"), -1, "Id Startswith 5");
+        
+      
+
+
 
 
         // In case of isempty filter expression
@@ -172,7 +195,10 @@ QUnit.asyncTest("Filter Products", function() {
             value: ""
         }];
         returnValue = _contentViewModel.expressionParser(_filterExpression, _sortExpression, _data);
-        assert.equal(returnValue.length, 0, "0 Records found with empty Id");
+        
+     
+            assert.equal(returnValue.length, 0, "0 Records found with empty Id");
+         
 
 
         // In case of isnotempty filter expression
@@ -183,9 +209,14 @@ QUnit.asyncTest("Filter Products", function() {
             value: ""
         }];
         returnValue = _contentViewModel.expressionParser(_filterExpression, _sortExpression, _data);
+
         assert.equal(returnValue.length, 200, "200 Records found with non empty Id");
         assert.ok(returnValue[0].Id !== "", "Id is not empty");
-        Qunit.start();
+        done();
+    });
+      
+
+        
     });
 
 });

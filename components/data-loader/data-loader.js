@@ -3,7 +3,7 @@ import {  DefineList, DefineMap, stacheConverters, Component, QueryLogic, connec
 import layout from './data-loader.stache';
 import sampleData from '../../data/sampleData.json';
 
-
+export 
 var Product = DefineMap.extend("Product", {
     Id: "number",
     Description: "string",
@@ -17,15 +17,17 @@ var Product = DefineMap.extend("Product", {
     FirmwareVersion: "string"
 });
 
+export 
 var contentViewModel = DefineMap.extend({
     productsPromise: [],
     isLoading : { type: "boolean", default: false },
     loadData : function() {
         var _self = this;
         _self.isLoading = true ;
-        Product.getList().then(function(_data) {
+        return Product.getList().then(function(_data) {
              _self.productsPromise = _self.expressionParser(_self.filterExpressions, _self.sortExpression, _data);
              _self.isLoading = false;
+             return _data;
         });
     },
     filterExpressions: {
@@ -148,3 +150,6 @@ Component.extend({
       view: layout,
       ViewModel: contentViewModel
 });
+
+
+
